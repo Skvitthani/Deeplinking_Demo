@@ -1,6 +1,14 @@
+import {
+  Image,
+  Share,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {getSingleProduct} from '../services/Apis';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 
 const ProductDetails = ({route}) => {
   const productId = route?.params?.productId;
@@ -9,11 +17,40 @@ const ProductDetails = ({route}) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getSingleProduct(productId);
-      console.log('response?.products', response);
       setProductDetails(response);
     };
     fetchData();
   }, [productId]);
+
+  const generateLinik = async () => {
+    try {
+      const link = await dynamicLinks().buildShortLink(
+        {
+          link: `https://mrdeeplinking.page.link/63fF?${productId}`,
+          domainUriPrefix: 'https://mrdeeplinking.page.link',
+          android: {
+            packageName: 'com.deeplinking',
+          },
+        },
+        dynamicLinks.ShortLinkType.DEFAULT,
+      );
+      console.log('link', link);
+      return link;
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  const shareProduct = async () => {
+    try {
+      const getLink = await generateLinik();
+      Share.share({
+        message: getLink,
+      });
+    } catch (error) {
+      console.log('Share error', error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -30,7 +67,11 @@ const ProductDetails = ({route}) => {
           <Text>{productDetails?.description}</Text>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity onPress={() => {}} style={styles.btn}>
+          <TouchableOpacity
+            onPress={() => {
+              shareProduct();
+            }}
+            style={styles.btn}>
             <Text style={styles.btnTitle}>Share Product</Text>
           </TouchableOpacity>
         </View>

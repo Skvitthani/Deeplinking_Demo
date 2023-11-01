@@ -13,7 +13,6 @@ export const getApiData = async () => {
 export const getSingleProduct = async productId => {
   try {
     const response = await fetch(`https://dummyjson.com/products/${productId}`);
-    console.log('response', response);
     const res = response.json();
     return res;
   } catch (error) {
