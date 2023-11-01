@@ -16,7 +16,6 @@ const HomeScreen = ({navigation}) => {
     const fetchData = async () => {
       if (productData?.length === 0) {
         const response = await getApiData();
-        console.log('response?.products', response?.products);
         setProductData(response?.products);
       }
     };
