@@ -1,14 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import StckNavigate from './src/navigations/StckNavigate';
 
 const App = () => {
-  return (
-    <View>
-      <Text>App</Text>
-    </View>
-  );
+  return <StckNavigate />;
 };
 
 export default App;
-
-const styles = StyleSheet.create({});
