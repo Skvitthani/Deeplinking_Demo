@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
+import SwiperList from '../screens/SwiperList';
 import ProductDetails from '../screens/ProductDetails';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -27,6 +28,7 @@ const StckNavigate = () => {
     <NavigationContainer>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="SwiperList" component={SwiperList} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Product" component={ProductDetails} />
       </Stack.Navigator>
