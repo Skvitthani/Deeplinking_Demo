@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput} from 'react-native';
 import React from 'react';
 
 const InputText = ({placeholder, onChangeText, value}) => {
@@ -7,8 +7,8 @@ const InputText = ({placeholder, onChangeText, value}) => {
       value={value}
       placeholder={placeholder}
       style={styles.inputStyle}
-      placeholderTextColor={'#EBF3E8'}
       onChangeText={onChangeText}
+      placeholderTextColor={'#EBF3E8'}
     />
   );
 };
@@ -17,6 +17,7 @@ export default InputText;
 
 const styles = StyleSheet.create({
   inputStyle: {
+    padding: 20,
     marginTop: 20,
     paddingLeft: 10,
     borderRadius: 10,

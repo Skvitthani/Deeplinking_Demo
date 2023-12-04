@@ -32,11 +32,11 @@ const StckNavigate = () => {
     <NavigationContainer>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="FireStorageScreen" component={FireStorageScreen} />
         <Stack.Screen
           name="RealTimeDatabaseScreen"
           component={RealTimeDatabaseScreen}
         />
+        <Stack.Screen name="FireStorageScreen" component={FireStorageScreen} />
         <Stack.Screen name="CrashlyticsScreen" component={CrashlyticsScreen} />
         <Stack.Screen name="GoogleMap" component={GoogleMap} />
         <Stack.Screen name="SwiperList" component={SwiperList} />

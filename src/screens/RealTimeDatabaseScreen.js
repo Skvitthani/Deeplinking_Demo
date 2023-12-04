@@ -1,9 +1,16 @@
+import {
+  Text,
+  View,
+  FlatList,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import InputText from '../components/InputText';
 import React, {useEffect, useState} from 'react';
 import ButtonConst from '../components/ButtonConst';
 import database from '@react-native-firebase/database';
 import {generateRandomId, showToast} from '../helper/CommanFunctions';
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const RealTimeDatabaseScreen = () => {
   const [age, setAge] = useState('');
@@ -22,7 +29,10 @@ const RealTimeDatabaseScreen = () => {
         name: name,
         id: randomId,
       })
-      .then(() => console.log('Data set.'));
+      .then(() => {
+        setAge('');
+        setName('');
+      });
   };
 
   useEffect(() => {
@@ -105,6 +115,7 @@ const RealTimeDatabaseScreen = () => {
 
   return (
     <View style={styles.container}>
+      <SafeAreaView />
       <View style={styles.inputView}>
         <InputText
           placeholder={'Enter Name..'}
