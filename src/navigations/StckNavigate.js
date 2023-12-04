@@ -10,6 +10,7 @@ import GoogleMap from '../screens/GoogleMap';
 import CrashlyticsScreen from '../screens/CrashlyticsScreen';
 import FireStorageScreen from '../screens/FireStorageScreen';
 import RealTimeDatabaseScreen from '../screens/RealTimeDatabaseScreen';
+import BatterImageScreen from '../screens/BatterImageScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ const StckNavigate = () => {
     <NavigationContainer>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="BatterImageScreen" component={BatterImageScreen} />
         <Stack.Screen
           name="RealTimeDatabaseScreen"
           component={RealTimeDatabaseScreen}
