@@ -30,13 +30,11 @@ const CrashlyticsScreen = () => {
   //       });
   //     crashlytics().log('on Press');
   //   } catch (error) {
-  //     console.log('error', error);
   //     crashlytics().recordError(error);
   //   }
   // };
 
   async function onSignIn(user) {
-    console.log('user', user);
     crashlytics().log('User signed in.');
     await Promise.all([
       crashlytics().setUserId(user.uid),

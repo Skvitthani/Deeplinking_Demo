@@ -13,13 +13,14 @@ export default ButtonConst;
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    padding: 10,
+    padding: 15,
     borderRadius: 10,
     alignItems: 'center',
     backgroundColor: '#557C55',
     justifyContent: 'center',
   },
   buttonTextStyle: {
+    fontSize: 18,
     color: 'white',
     fontWeight: '500',
   },
