@@ -27,10 +27,12 @@ if linkage != nil
 end
 
 target 'Deeplinking' do
-  pod 'RNFBStorage', :path => '../node_modules/@react-native-firebase/storage'
   config = use_native_modules!
   use_frameworks! :linkage => :static
   $RNFirebaseAsStaticFramework = true
+  pod 'rn-fetch-blob',
+    :path => '../node_modules/rn-fetch-blob'
+
   pod 'Firebase', :modular_headers => true
   pod 'FirebaseCoreInternal', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true
