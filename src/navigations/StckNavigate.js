@@ -18,6 +18,7 @@ import CrashlyticsScreen from '../screens/CrashlyticsScreen';
 import FireStorageScreen from '../screens/FireStorageScreen';
 import BatterImageScreen from '../screens/BatterImageScreen';
 import RealTimeDatabaseScreen from '../screens/RealTimeDatabaseScreen';
+import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -59,6 +60,7 @@ const StckNavigate = () => {
       }}>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="MainHomeScreen" component={MainHomeScreen} />
         <Stack.Screen name="BatterImageScreen" component={BatterImageScreen} />
         <Stack.Screen
