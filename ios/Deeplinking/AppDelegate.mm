@@ -1,12 +1,13 @@
 #import "AppDelegate.h"
 #import <Firebase.h>
-
+#import <GoogleMaps/GoogleMaps.h>
 #import <React/RCTBundleURLProvider.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [GMSServices provideAPIKey:@"AIzaSyDOJM4bdpX3wXWQyx1m5mkQCFohWn1S7pI"];
   [FIRApp configure];
   self.moduleName = @"Deeplinking";
   // You can add your custom initial props in the dictionary below.
