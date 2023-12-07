@@ -12,13 +12,15 @@ import dynamicLinks from '@react-native-firebase/dynamic-links';
 import GoogleMap from '../screens/GoogleMap';
 import HomeScreen from '../screens/HomeScreen';
 import SwiperList from '../screens/SwiperList';
+import SplashScreen from '../screens/SplashScreen';
 import ProductDetails from '../screens/ProductDetails';
+import PractiseScreen from '../screens/PractiseScreen';
 import MainHomeScreen from '../screens/MainHomeScreen';
 import CrashlyticsScreen from '../screens/CrashlyticsScreen';
 import FireStorageScreen from '../screens/FireStorageScreen';
 import BatterImageScreen from '../screens/BatterImageScreen';
 import RealTimeDatabaseScreen from '../screens/RealTimeDatabaseScreen';
-import SplashScreen from '../screens/SplashScreen';
+import TinderAnimationScreen from '../screens/TinderAnimationScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +62,11 @@ const StckNavigate = () => {
       }}>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen
+          name="TinderAnimationScreen"
+          component={TinderAnimationScreen}
+        />
+        <Stack.Screen name="PractiseScreen" component={PractiseScreen} />
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="MainHomeScreen" component={MainHomeScreen} />
         <Stack.Screen name="BatterImageScreen" component={BatterImageScreen} />
