@@ -21,6 +21,7 @@ import FireStorageScreen from '../screens/FireStorageScreen';
 import BatterImageScreen from '../screens/BatterImageScreen';
 import RealTimeDatabaseScreen from '../screens/RealTimeDatabaseScreen';
 import TinderAnimationScreen from '../screens/TinderAnimationScreen';
+import SendNotification from '../screens/SendNotification';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +63,7 @@ const StckNavigate = () => {
       }}>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="SendNotification" component={SendNotification} />
         <Stack.Screen
           name="TinderAnimationScreen"
           component={TinderAnimationScreen}
