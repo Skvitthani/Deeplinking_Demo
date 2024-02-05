@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StyleSheet} from 'react-native';
+import {Linking, StyleSheet} from 'react-native';
 
 // Navigations
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -22,6 +22,8 @@ import BatterImageScreen from '../screens/BatterImageScreen';
 import RealTimeDatabaseScreen from '../screens/RealTimeDatabaseScreen';
 import TinderAnimationScreen from '../screens/TinderAnimationScreen';
 import SendNotification from '../screens/SendNotification';
+import Screen1 from '../screens/Screen1';
+import Screen2 from '../screens/Screen2';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,8 +45,50 @@ const StckNavigate = () => {
     return null;
   };
 
+  useEffect(() => {
+    const fetchInitialURL = async () => {
+      try {
+        Linking.addEventListener('url', ({url}) => {
+          console.log('url----------', url);
+        });
+
+        const url = await Linking.getInitialURL();
+        if (url) {
+          console.log('url----------', url);
+        }
+      } catch (error) {
+        console.error('Error fetching initial URL:', error);
+      }
+    };
+
+    fetchInitialURL();
+  }, []);
+
+  const config = {
+    screens: {
+      Screen1: {
+        path: 'Screen1/:message',
+        parse: {
+          message: message => `${message}`,
+        },
+      },
+      Screen2: {
+        path: 'Screen2/:message',
+        parse: {
+          message: message => `${message}`,
+        },
+      },
+    },
+  };
+
+  const linking = {
+    prefixes: ['http://deeplink'],
+    config,
+  };
+
   return (
     <NavigationContainer
+      linking={linking}
       ref={navigationRef}
       onReady={() => {
         routeNameRef.current = navigationRef.current.getCurrentRoute().name;
@@ -63,6 +107,16 @@ const StckNavigate = () => {
       }}>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen
+          name="Screen1"
+          component={Screen1}
+          options={{headerShown: true}}
+        />
+        <Stack.Screen
+          name="Screen2"
+          component={Screen2}
+          options={{headerShown: true}}
+        />
         <Stack.Screen name="SendNotification" component={SendNotification} />
         <Stack.Screen
           name="TinderAnimationScreen"
