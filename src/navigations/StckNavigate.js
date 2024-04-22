@@ -22,8 +22,7 @@ import BatterImageScreen from '../screens/BatterImageScreen';
 import RealTimeDatabaseScreen from '../screens/RealTimeDatabaseScreen';
 import TinderAnimationScreen from '../screens/TinderAnimationScreen';
 import SendNotification from '../screens/SendNotification';
-import Screen1 from '../screens/Screen1';
-import Screen2 from '../screens/Screen2';
+import StoryViewScreen from '../screens/StoryViewScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -108,13 +107,8 @@ const StckNavigate = () => {
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen
-          name="Screen1"
-          component={Screen1}
-          options={{headerShown: true}}
-        />
-        <Stack.Screen
-          name="Screen2"
-          component={Screen2}
+          name="StoryViewScreen"
+          component={StoryViewScreen}
           options={{headerShown: true}}
         />
         <Stack.Screen name="SendNotification" component={SendNotification} />

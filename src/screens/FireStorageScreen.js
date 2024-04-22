@@ -16,7 +16,7 @@ const FireStorageScreen = () => {
 
       const reference = storage().ref();
 
-      const task = reference.child('/document/' + docName).putFile(docPath);
+      const task = (await reference.child('/document/' + docName).putFile(docPath))
       task.on('state_changed', async onSnap => {
         const imageUrl = await storage()
           .ref(onSnap?.ref?.fullPath)
