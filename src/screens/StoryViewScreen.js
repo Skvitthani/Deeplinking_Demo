@@ -1,65 +1,65 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import InstaStory from 'react-native-insta-story';
+import React, {useRef} from 'react';
+import {Footer, MultiStory} from 'react-native-story-view';
+import stories from '../helper/DummyStoryViewData';
 
 const StoryViewScreen = () => {
-  const data = [
-    {
-      user_id: 1,
-      user_image:
-        'https://pbs.twimg.com/profile_images/1222140802475773952/61OmyINj.jpg',
-      user_name: 'Ahmet Çağlar Durmuş',
-      stories: [
-        {
-          story_id: 1,
-          story_image:
-            'https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg',
-          swipeText: 'Custom swipe text for this story',
-          onPress: () => console.log('story 1 swiped'),
-        },
-        {
-          story_id: 2,
-          story_image:
-            'https://image.freepik.com/free-vector/mobile-wallpaper-with-fluid-shapes_79603-601.jpg',
-        },
-      ],
-    },
-    {
-      user_id: 2,
-      user_image:
-        'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
-      user_name: 'Test User',
-      stories: [
-        {
-          story_id: 1,
-          story_image:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjORKvjcbMRGYPR3QIs3MofoWkD4wHzRd_eg&usqp=CAU',
-          swipeText: 'Custom swipe text for this story',
-          onPress: () => console.log('story 1 swiped'),
-        },
-        {
-          story_id: 2,
-          story_image:
-            'https://files.oyebesmartest.com/uploads/preview/vivo-u20-mobile-wallpaper-full-hd-(1)qm6qyz9v60.jpg',
-          swipeText: 'Custom swipe text for this story',
-          onPress: () => console.log('story 2 swiped'),
-        },
-      ],
-    },
-  ];
+  const index = 0;
 
+  const viewedStories = useRef(
+    Array(stories[index].stories.length)
+      .fill(stories[index].stories)
+      .map((item, index) => item[index].isSeen ?? false),
+  );
+
+  const multiStoryRef = useRef(null);
   return (
-    <View>
-      <InstaStory
-  data={data}
-  duration={10}
-/>
+    <View style={styles.container}>
+      <MultiStory
+        stories={stories}
+        ref={multiStoryRef}
+        avatarProps={{
+          userNameStyle: {fontSize: 16},
+        }}
+        storyContainerProps={{
+          renderFooterComponent: ({}) => (
+            <Footer
+              sendIconProps={{
+                source: require('../assets/images/chevron.png'),
+                style: {height: 50, width: 50},
+              }}
+            />
+          ),
+          renderCustomView: ({}) => (
+            <View
+              style={{
+                position: 'absolute',
+                top: 40,
+                right: 50,
+              }}>
+              <Text style={{color: '#fff'}}>dfc</Text>
+            </View>
+          ),
+          footerView: ({}) => (
+            <View
+              style={{
+                position: 'absolute',
+                backgroundColor: 'red',
+                top: 100,
+              }}>
+              <Text style={{color: '#fff'}}>dfc</Text>
+            </View>
+          ),
+        }}
+      />
     </View>
   );
 };
 
 export default StoryViewScreen;
 
-const styles = StyleSheet.create({});
-
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

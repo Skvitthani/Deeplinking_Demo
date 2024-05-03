@@ -23,6 +23,7 @@ import RealTimeDatabaseScreen from '../screens/RealTimeDatabaseScreen';
 import TinderAnimationScreen from '../screens/TinderAnimationScreen';
 import SendNotification from '../screens/SendNotification';
 import StoryViewScreen from '../screens/StoryViewScreen';
+import StaggeredView from '../screens/StaggeredView';
 
 const Stack = createNativeStackNavigator();
 
@@ -106,6 +107,11 @@ const StckNavigate = () => {
       }}>
       <HandelDeepLinking />
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen
+          name="StaggeredView"
+          component={StaggeredView}
+          options={{headerShown: true}}
+        />
         <Stack.Screen
           name="StoryViewScreen"
           component={StoryViewScreen}
